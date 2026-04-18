@@ -16,19 +16,22 @@ public class User {
     private String password;
     private LocalDateTime createdAt;
     private String createdBy;
+    private String role;
 
     // Constructors
     public User() {
     }
 
-    public User(Long id, String name, String email, String password, LocalDateTime createdAt, String createdBy) {
-        this.id = id;
+    public User(String name, String email, String password, LocalDateTime createdAt, String createdBy, String role) {
         this.name = name;
         this.email = email;
         this.password = password;
         this.createdAt = createdAt;
         this.createdBy = createdBy;
+        this.role = role;
     }
+
+
 
     // Getters and Setters
     public Long getId() {
@@ -76,5 +79,13 @@ public class User {
 
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }
