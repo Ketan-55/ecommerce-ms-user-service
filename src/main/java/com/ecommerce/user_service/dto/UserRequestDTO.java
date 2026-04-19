@@ -1,11 +1,18 @@
 package com.ecommerce.user_service.dto;
 
+import javax.persistence.Entity;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 
 public class UserRequestDTO {
-
+    @NotBlank(message = "Name is required")
     private String name;
+
+    @Email(message = "Email should be valid")
+    @NotBlank(message = "Email is required")
     private String email;
+    @NotBlank(message = "Password is required")
     private String password;
 
     public UserRequestDTO() {

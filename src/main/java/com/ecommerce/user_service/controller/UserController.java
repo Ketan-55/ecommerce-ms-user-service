@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/users")
 public class UserController {
@@ -19,7 +21,7 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/register")
-    public ApiResponse<UserResponseDTO> registerUser(@RequestBody UserRequestDTO request) {
+    public ApiResponse<UserResponseDTO> registerUser(@Valid @RequestBody UserRequestDTO request) {
 
         UserResponseDTO response = userService.registerUser(request);
         return new ApiResponse<>("success", "User registered successfully",response);
