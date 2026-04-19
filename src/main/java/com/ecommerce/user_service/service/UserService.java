@@ -3,6 +3,7 @@ package com.ecommerce.user_service.service;
 import com.ecommerce.user_service.dto.UserRequestDTO;
 import com.ecommerce.user_service.dto.UserResponseDTO;
 import com.ecommerce.user_service.entity.User;
+import com.ecommerce.user_service.exception.UserAlreadyExistsException;
 import com.ecommerce.user_service.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +21,7 @@ public class UserService {
         // 1. Check duplicate
         User existingUser = userRepository.findByEmail(request.getEmail());
         if (existingUser != null) {
-            throw new RuntimeException("Email already exists");
+            throw new UserAlreadyExistsException("Email already exists");
         }
 
         // 2. Map DTO → Entity
